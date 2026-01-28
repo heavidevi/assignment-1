@@ -2,23 +2,48 @@
 using namespace std;
 
 
-int main(){
-    int n,max=-9999,min=9999;
-    cout<<"enter number of elements: ";
-    cin>>n;
-    int *ptr= new int[n];
-    cout<<"enter elements:"<<endl;
-    for(int i=0;i<n;i++){
-        cin>>ptr[i];
-        if(ptr[i]>max){
-            max=ptr[i];
-        }
-        if(ptr[i]<min){
-            min=ptr[i];
+int findMax(int* arr, int size) {
+    int max = arr[0];
+    for(int i = 1; i < size; i++) {
+        if(arr[i] > max) {
+            max = arr[i];
         }
     }
-    cout<<"maximum element is: "<<max<<endl;
-    cout<<"minimum element is: "<<min<<endl;
+    return max;
+}
+
+
+int findMin(int* arr, int size) {
+    int min = arr[0];
+    for(int i = 1; i < size; i++) {
+        if(arr[i] < min) {
+            min = arr[i];
+        }
+    }
+    return min;
+}
+
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    
+
+    int* ptr = new int[n];
+    
+    cout << "Enter elements:" << endl;
+    for(int i = 0; i < n; i++) {
+        cin >> ptr[i];
+    }
+    
+
+    int maximum = findMax(ptr, n);
+    int minimum = findMin(ptr, n);
+    
+    cout << "Maximum element is: " << maximum << endl;
+    cout << "Minimum element is: " << minimum << endl;
+    
+    
     delete[] ptr;
     return 0;
 }
